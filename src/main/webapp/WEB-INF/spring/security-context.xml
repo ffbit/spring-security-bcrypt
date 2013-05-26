@@ -9,6 +9,11 @@
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
 
     <security:http auto-config="true">
+        <!-- Fix problem redirecting to "/favicon.ico" -->
+        <security:intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />
+        <!-- Static content -->
+        <security:intercept-url pattern="/resources/**" access="ROLE_ANONYMOUS"/>
+
         <security:intercept-url pattern="/**" access="ROLE_USER"/>
         <security:logout logout-url="/logout"/>
     </security:http>

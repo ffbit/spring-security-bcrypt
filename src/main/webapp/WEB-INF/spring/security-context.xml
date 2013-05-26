@@ -21,8 +21,8 @@
     <security:authentication-manager alias="authenticationManager">
         <security:authentication-provider>
             <security:user-service>
-                <security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
-                <security:user name="user" password="user" authorities="ROLE_USER"/>
+                <security:user name="admin" password="admin_pwd" authorities="ROLE_USER, ROLE_ADMIN"/>
+                <security:user name="user" password="user_pwd" authorities="ROLE_USER"/>
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>

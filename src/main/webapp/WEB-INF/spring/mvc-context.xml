@@ -17,6 +17,12 @@
     <!-- Configures the @Controller programming model -->
     <mvc:annotation-driven/>
 
+    <!-- Application Message Bundle -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/messages/messages"/>
+        <property name="cacheSeconds" value="0"/>
+    </bean>
+
     <!-- FreeMarker template engine configuration -->
     <bean id="freemarkerConfig"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">

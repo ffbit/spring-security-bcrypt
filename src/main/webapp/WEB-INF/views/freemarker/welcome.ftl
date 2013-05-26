@@ -1,9 +1,10 @@
+<#import "/spring.ftl" as spring />
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome page</title>
+    <title><@spring.message "welcome.page.title"/><@spring.message "application.title.separator"/><@spring.message "application.title.name"/></title>
   </head>
   <body>
-    <h1>Welcome</h1>
+    <h1><@spring.message "welcome.page.header"/></h1>
   </body>
 </html>

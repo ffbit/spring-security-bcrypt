@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
+
+    <security:http auto-config="true">
+        <!-- Fix problem redirecting to "/favicon.ico" -->
+        <security:intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />
+        <!-- Static content -->
+        <security:intercept-url pattern="/resources/**" access="ROLE_ANONYMOUS"/>
+
+        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:logout logout-url="/logout"/>
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="admin" password="admin_pwd" authorities="ROLE_USER, ROLE_ADMIN"/>
+                <security:user name="user" password="user_pwd" authorities="ROLE_USER"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>

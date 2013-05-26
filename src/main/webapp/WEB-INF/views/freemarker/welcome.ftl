@@ -9,5 +9,8 @@
   </head>
   <body>
     <h1><@spring.message "welcome.page.header"/></h1>
+    <div>
+      <a href="/logout"><@spring.message "logout"/></a>
+    </div>
   </body>
 </html>

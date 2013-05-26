@@ -9,4 +9,6 @@
 
     <import resource="mvc-context.xml"/>
 
+    <import resource="security-context.xml"/>
+
 </beans>

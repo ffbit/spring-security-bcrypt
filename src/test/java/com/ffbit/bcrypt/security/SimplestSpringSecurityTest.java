@@ -15,7 +15,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -40,15 +39,8 @@ public class SimplestSpringSecurityTest {
 
     @Test
     public void itShouldDenyAccessForNotRegisteredUser() throws Exception {
-        Authentication authentication =
-                new UsernamePasswordAuthenticationToken("bad_user", "bad_pwd");
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-
-        MockHttpSession session = new MockHttpSession();
-        session.setAttribute(
-                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
-                securityContext);
+        MockHttpSession session =
+                authenticateUserWithLoginAndPassword("bad_user", "bad_pwd");
 
         mockMvc.perform(get(SECURED_URI).session(session))
                 .andExpect(redirectedUrl(LOGIN_PAGE_URL));
@@ -56,8 +48,16 @@ public class SimplestSpringSecurityTest {
 
     @Test
     public void itShouldAllowAccessRoleUser() throws Exception {
+        MockHttpSession session =
+                authenticateUserWithLoginAndPassword("user", "user_pwd");
+
+        mockMvc.perform(get(SECURED_URI).session(session))
+                .andExpect(status().isOk());
+    }
+
+    private MockHttpSession authenticateUserWithLoginAndPassword(String login, String password) {
         Authentication authentication =
-                new UsernamePasswordAuthenticationToken("user", "user_pwd");
+                new UsernamePasswordAuthenticationToken(login, password);
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(authentication);
 
@@ -66,8 +66,7 @@ public class SimplestSpringSecurityTest {
                 HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 securityContext);
 
-        mockMvc.perform(get(SECURED_URI).session(session))
-                .andExpect(status().isOk());
+        return session;
     }
 
 }

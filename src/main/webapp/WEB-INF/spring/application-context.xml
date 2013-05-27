@@ -13,4 +13,6 @@
 
     <import resource="persistence-context.xml"/>
 
+    <import resource="jpa-repository-context.xml"/>
+
 </beans>

@@ -29,22 +29,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration("file:src/test/resources/spring/test-application-context.xml")
 public class SimplestSpringSecurityTest {
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
     private MockMvc mockMvc;
 
     private final String SECURED_URI = "/";
 
-    private final String LOGIN_PAGE_URL = "http://localhost/spring_security_login";
-
-    @Before
-    public void setUp() throws Exception {
-        User user = new User("user", "user_pwd");
-        user.grantAuthority(UserRole.ROLE_USER);
-
-        userRepository.sigUp(user);
-    }
+    private final String LOGIN_PAGE_URL = "http://localhost/signin";
 
     @Test
     public void itShouldDenyAnonymousAccess() throws Exception {
@@ -64,7 +53,7 @@ public class SimplestSpringSecurityTest {
     @Test
     public void itShouldAllowAccessRoleUser() throws Exception {
         MockHttpSession session =
-                authenticateUserWithLoginAndPassword("user", "user_pwd");
+                authenticateUserWithLoginAndPassword("user", "password");
 
         mockMvc.perform(get(SECURED_URI).session(session))
                 .andExpect(status().isOk());

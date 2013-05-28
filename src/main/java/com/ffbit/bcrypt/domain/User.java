@@ -21,7 +21,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users",
-        uniqueConstraints = @UniqueConstraint(columnNames = "username"))
+        uniqueConstraints = @UniqueConstraint(columnNames = "username", name = "uk_users_username"))
 @Access(AccessType.PROPERTY)
 public class User extends AbstractPersistable<Integer> implements UserDetails {
     private static final long serialVersionUID = 8608334294620998454L;

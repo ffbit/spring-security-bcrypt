@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><@spring.message "welcome.page.title"/><@spring.message "application.title.separator"/><@spring.message "application.title.name"/></title>
     <link rel="icon" href="/resources/images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/resources/styles/main.css" />

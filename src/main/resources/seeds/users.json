@@ -1,0 +1,10 @@
+[{
+  "_class": "com.ffbit.bcrypt.domain.User",
+  "username": "user",
+  "password": "$2a$10$AgEKS4KOxoZdPcyaRJVn1eqO1LLL/4zmCUWDWs9aQheheCgirldoG",
+  "accountNonExpired": true,
+  "accountNonLocked": true,
+  "credentialsNonExpired":true,
+  "enabled": true,
+  "authorities": ["ROLE_USER"]
+}]

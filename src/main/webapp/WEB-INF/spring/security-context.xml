@@ -12,10 +12,10 @@
     <context:component-scan base-package="com.ffbit.bcrypt.secutity"/>
 
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
-
-    <security:http auto-config="true">
+    
+    <security:http auto-config="true" use-expressions="true">
         <!-- Form login configuration -->
-        <security:intercept-url pattern="/signin" access="ROLE_ANONYMOUS"/>
+        <security:intercept-url pattern="/signin" access="permitAll"/>
         <security:form-login login-page="/signin"
                              login-processing-url="/security_check"
                              username-parameter="username"
@@ -23,11 +23,11 @@
                              authentication-failure-url="/signin?error=true"/>
 
         <!-- Fix problem redirecting to "/favicon.ico" -->
-        <security:intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS"/>
+        <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
         <!-- Static content -->
-        <security:intercept-url pattern="/resources/**" access="ROLE_ANONYMOUS"/>
+        <security:intercept-url pattern="/resources/**" access="permitAll"/>
 
-        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
         <security:logout logout-url="/logout"/>
     </security:http>
 

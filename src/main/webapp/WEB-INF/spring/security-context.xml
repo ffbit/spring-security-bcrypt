@@ -22,6 +22,9 @@
                              password-parameter="password"
                              authentication-failure-url="/signin"/>
 
+        <!-- Remeber me -->
+        <security:remember-me key="myAppKey"/>
+
         <!-- Fix problem redirecting to "/favicon.ico" -->
         <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
         <!-- Static content -->

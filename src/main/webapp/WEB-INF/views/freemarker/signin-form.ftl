@@ -18,7 +18,7 @@
             <@spring.message "${securityException}"/>
         </div>
     </#if>
-    <form action="/security_check" method="post">
+    <form action="/security_check" method="post" accept-charset="UTF-8">
         <div>
             <label for="username"><@spring.message "signin.page.form.label.username"/>
                 <input name="username" id="username" type="text"/>
@@ -27,6 +27,11 @@
         <div>
             <label for="password"><@spring.message "signin.page.form.label.password"/>
                 <input name="password" id="password" type="password"/>
+            </label>
+        </div>
+        <div>
+            <label for="remember-me"><@spring.message "signin.page.form.label.rememberme"/>
+                <input name="_spring_security_remember_me" id="remember-me" type="checkbox"/>
             </label>
         </div>
         <div>

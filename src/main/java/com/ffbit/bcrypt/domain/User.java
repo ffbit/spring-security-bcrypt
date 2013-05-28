@@ -1,6 +1,5 @@
 package com.ffbit.bcrypt.domain;
 
-import org.hibernate.validator.constraints.Length;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,6 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,7 +53,7 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
     }
 
     @NotNull
-    @Length(min = 4, max = 40)
+    @Size(min = 4, max = 40)
     @Column(name = "username")
     @Override
     public String getUsername() {
@@ -85,7 +85,7 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
     }
 
     @NotNull
-    @Length(min = 6, max = 60)
+    @Size(min = 60, max = 60)
     @Column(name = "password")
     @Override
     public String getPassword() {

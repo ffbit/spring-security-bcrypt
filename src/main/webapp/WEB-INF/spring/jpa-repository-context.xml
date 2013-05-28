@@ -8,4 +8,6 @@
 
     <jpa:repositories base-package="com.ffbit.bcrypt.repository"/>
 
+    <jpa:repositories base-package="com.ffbit.bcrypt.repository" repository-impl-postfix="Impl"/>
+
 </beans>

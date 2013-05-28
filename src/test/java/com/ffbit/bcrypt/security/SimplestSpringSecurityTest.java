@@ -43,7 +43,7 @@ public class SimplestSpringSecurityTest {
         User user = new User("user", "user_pwd");
         user.grantAuthority(UserRole.ROLE_USER);
 
-        userRepository.save(user);
+        userRepository.sigUp(user);
     }
 
     @Test

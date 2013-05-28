@@ -20,7 +20,7 @@
                              login-processing-url="/security_check"
                              username-parameter="username"
                              password-parameter="password"
-                             authentication-failure-url="/signin?error=true"/>
+                             authentication-failure-url="/signin"/>
 
         <!-- Fix problem redirecting to "/favicon.ico" -->
         <security:intercept-url pattern="/favicon.ico" access="permitAll"/>

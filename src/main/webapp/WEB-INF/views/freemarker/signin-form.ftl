@@ -11,7 +11,13 @@
 </head>
 <body>
 <h1><@spring.message "signin.page.header"/></h1>
+
 <div>
+    <#if securityException?has_content>
+        <div class="error">
+            <@spring.message "${securityException}"/>
+        </div>
+    </#if>
     <form action="/security_check" method="post">
         <div>
             <label for="username"><@spring.message "signin.page.form.label.username"/>
@@ -24,7 +30,7 @@
             </label>
         </div>
         <div>
-            <input type="submit" value="<@spring.message "signin.page.form.submit"/>"/>
+            <input type="submit" value="<@spring.message 'signin.page.form.submit'/>"/>
         </div>
     </form>
 </div>

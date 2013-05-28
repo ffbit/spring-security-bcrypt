@@ -85,14 +85,14 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
     }
 
     @NotNull
-    @Length(min = 6, max = 40)
+    @Length(min = 6, max = 60)
     @Column(name = "password")
     @Override
     public String getPassword() {
         return password;
     }
 
-    private void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

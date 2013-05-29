@@ -23,7 +23,7 @@
                              authentication-failure-url="/signin"/>
 
         <!-- Remeber me -->
-        <security:remember-me key="myAppKey"/>
+        <security:remember-me key="myAppKey" data-source-ref="dataSource"/>
 
         <!-- Fix problem redirecting to "/favicon.ico" -->
         <security:intercept-url pattern="/favicon.ico" access="permitAll"/>

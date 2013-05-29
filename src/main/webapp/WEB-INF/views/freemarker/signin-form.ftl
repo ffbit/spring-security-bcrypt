@@ -2,8 +2,8 @@
 <#import "/spring.ftl" as spring />
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><@spring.message "signin.page.title"/><@spring.message "application.title.separator"/><@spring.message
         "application.title.name"/></title>
@@ -32,7 +32,7 @@
         <input name="password" type="password" class="input-block-level"
                placeholder="<@spring.message 'signin.page.form.label.password'/>">
         <label class="checkbox">
-            <input type="checkbox" value="remember-me"><@spring.message "signin.page.form.label.rememberme"/>
+            <input type="checkbox" name="remember-me-parameter"><@spring.message "signin.page.form.label.rememberme"/>
         </label>
         <button class="btn btn-large btn-primary" type="submit"><@spring.message 'signin.page.form.submit'/></button>
     </form>
@@ -43,6 +43,7 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="resources/lib/jquery/jquery-1.10.0.min.js"></script>
 <script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
 
 </body>

@@ -13,12 +13,13 @@
 
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource" destroy-method="close"
+          class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${database.driver}"/>
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.user}"/>
         <property name="password" value="${database.password}"/>
+        <property name="initialSize" value="${database.connection.initial.size}"/>
     </bean>
 
     <bean id="entityManagerFactory"

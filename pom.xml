@@ -12,6 +12,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <commons-dbcp.version>1.4</commons-dbcp.version>
         <freemarker.version>2.3.19</freemarker.version>
         <hibernate.version>4.2.2.Final</hibernate.version>
         <hibernate-validator.version>4.1.0.Final</hibernate-validator.version>
@@ -48,6 +49,13 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
+        </dependency>
+
+        <!-- DataBase Connection Pool -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons-dbcp.version}</version>
         </dependency>
 
         <dependency>

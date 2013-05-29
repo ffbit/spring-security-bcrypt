@@ -17,4 +17,6 @@
 
     <import resource="jpa-repository-population-context.xml"/>
 
+    <import resource="jdbc-population-context.xml"/>
+
 </beans>

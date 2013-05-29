@@ -12,7 +12,7 @@
     <context:component-scan base-package="com.ffbit.bcrypt.secutity"/>
 
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
-    
+
     <security:http auto-config="true" use-expressions="true">
         <!-- Form login configuration -->
         <security:intercept-url pattern="/signin" access="permitAll"/>
@@ -21,6 +21,10 @@
                              username-parameter="username"
                              password-parameter="password"
                              authentication-failure-url="/signin"/>
+
+        <!-- Remeber me -->
+        <security:remember-me key="myAppKey"
+                              services-ref="rememberMeServices"/>
 
         <!-- Fix problem redirecting to "/favicon.ico" -->
         <security:intercept-url pattern="/favicon.ico" access="permitAll"/>
@@ -39,5 +43,20 @@
 
     <bean id="passwordEncoder"
           class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <bean id="rememberMeServices"
+          class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
+        <constructor-arg value="myAppKey"/>
+        <constructor-arg ref="userDetailsService"/>
+        <constructor-arg ref="tokenRepository"/>
+        <property name="cookieName" value="remember-me"/>
+        <property name="tokenLength" value="32"/>
+        <property name="parameter" value="remember-me-parameter"/>
+    </bean>
+
+    <bean id="tokenRepository"
+          class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
 </beans>

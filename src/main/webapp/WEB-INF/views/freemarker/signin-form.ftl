@@ -31,7 +31,7 @@
         </div>
         <div>
             <label for="remember-me"><@spring.message "signin.page.form.label.rememberme"/>
-                <input name="_spring_security_remember_me" id="remember-me" type="checkbox"/>
+                <input name="remember-me-parameter" id="remember-me" type="checkbox"/>
             </label>
         </div>
         <div>

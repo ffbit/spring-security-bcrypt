@@ -9,7 +9,7 @@
           http://www.springframework.org/schema/context
           http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.ffbit.bcrypt.secutity"/>
+    <context:component-scan base-package="com.ffbit.bcrypt.security"/>
 
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
 

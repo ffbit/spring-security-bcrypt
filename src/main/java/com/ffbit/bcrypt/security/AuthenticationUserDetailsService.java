@@ -1,4 +1,4 @@
-package com.ffbit.bcrypt.secutity;
+package com.ffbit.bcrypt.security;
 
 import com.ffbit.bcrypt.domain.User;
 import com.ffbit.bcrypt.repository.UserRepository;

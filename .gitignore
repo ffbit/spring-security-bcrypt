@@ -9,4 +9,4 @@ bin
 *.iml
 .sonar-ide.properties
 *.swp
-
+*.log

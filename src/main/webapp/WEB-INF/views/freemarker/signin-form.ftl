@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><@spring.message "signin.page.title"/><@spring.message "application.title.separator"/><@spring.message
         "application.title.name"/></title>
-    <link rel="shortcut icon" href="/resources/images/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="/resources/lib/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/resources/styles/signin.css"/>
-    <link rel="stylesheet" type="text/css" href="/resources/lib/bootstrap/css/bootstrap-responsive.min.css"/>
+    <link rel="shortcut icon" href="<@spring.url '/resources/images/favicon.ico' />"/>
+    <link rel="stylesheet" type="text/css" href="<@spring.url '/resources/lib/bootstrap/css/bootstrap.min.css' />"/>
+    <link rel="stylesheet" type="text/css" href="<@spring.url '/resources/styles/signin.css' />"/>
+    <link rel="stylesheet" type="text/css" href="<@spring.url '/resources/lib/bootstrap/css/bootstrap-responsive.min.css' />"/>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
         </div>
     </#if>
 
-    <form class="form-signin" action="/security_check" method="post" accept-charset="UTF-8">
+    <form class="form-signin" action="<@spring.url '/security_check' />" method="post" accept-charset="UTF-8">
         <h2 class="form-signin-heading"><@spring.message "signin.page.header"/></h2>
         <input name="username" type="text" class="input-block-level"
                placeholder="<@spring.message 'signin.page.form.label.username'/>">

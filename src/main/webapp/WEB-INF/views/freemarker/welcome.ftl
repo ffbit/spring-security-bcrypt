@@ -11,7 +11,7 @@
   <body>
     <h1><@spring.message "welcome.page.header"/></h1>
     <div>
-      <a href="/logout"><@spring.message "logout"/></a>
+      <a href="<@spring.url '/logout' />"><@spring.message "logout"/></a>
     </div>
   </body>
 </html>

@@ -21,6 +21,8 @@
                              username-parameter="username"
                              password-parameter="password"
                              authentication-failure-url="/signin"/>
+        <!-- Sign Up -->
+        <security:intercept-url pattern="/signup" access="permitAll" />
 
         <!-- Remeber me -->
         <security:remember-me key="myAppKey"

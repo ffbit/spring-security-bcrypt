@@ -9,8 +9,9 @@
         "application.title.name"/></title>
     <link rel="shortcut icon" href="<@spring.url '/resources/images/favicon.ico' />"/>
     <link rel="stylesheet" type="text/css" href="<@spring.url '/resources/lib/bootstrap/css/bootstrap.min.css' />"/>
-    <link rel="stylesheet" type="text/css" href="<@spring.url '/resources/styles/signin.css' />"/>
-    <link rel="stylesheet" type="text/css" href="<@spring.url '/resources/lib/bootstrap/css/bootstrap-responsive.min.css' />"/>
+    <link rel="stylesheet" type="text/css" href="<@spring.url '/resources/styles/main.css' />"/>
+    <link rel="stylesheet" type="text/css"
+          href="<@spring.url '/resources/lib/bootstrap/css/bootstrap-responsive.min.css' />"/>
 </head>
 
 <body>
@@ -34,7 +35,8 @@
         <label class="checkbox">
             <input type="checkbox" name="remember-me-parameter"><@spring.message "signin.page.form.label.rememberme"/>
         </label>
-        <button class="btn btn-large btn-primary" type="submit"><@spring.message 'signin.page.form.submit'/></button>
+        <input class="btn btn-large btn-primary" type="submit" value="<@spring.message 'signin.page.form.submit'/>"/>
+        <@spring.message 'signin.page.form.or'/> <a href="<@spring.url '/signup' />"><@spring.message 'signin.page.form.signup'/></a>
     </form>
 
 </div>
@@ -43,8 +45,8 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="resources/lib/jquery/jquery-1.10.0.min.js"></script>
-<script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="<@spring.url '/resources/lib/jquery/jquery-1.10.0.min.js' />"></script>
+<script src="<@spring.url '/resources/lib/bootstrap/js/bootstrap.min.js' />"></script>
 
 </body>
 </html>

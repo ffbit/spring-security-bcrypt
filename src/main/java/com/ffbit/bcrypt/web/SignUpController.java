@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.persistence.PersistenceException;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,16 +45,41 @@ public class SignUpController {
     @RequestMapping(method = RequestMethod.POST)
     public String create(Model model, @Valid SignUpForm signUpForm,
                          BindingResult result) {
-        if (result.hasErrors()) {
-            logSignUpErrors(result);
-            fillErrors(model, result);
+        boolean success = !result.hasErrors() && signUpUser(signUpForm, result);
 
-            return VIEW;
+        if (success) {
+            return DEFAULT_REDIRECT;
         }
 
-        signUpUser(signUpForm);
+        logSignUpErrors(result);
+        fillErrors(model, result);
 
-        return DEFAULT_REDIRECT;
+        return VIEW;
+    }
+
+    private boolean signUpUser(SignUpForm signUpForm, BindingResult result) {
+        User existent = userRepository.findByUsername(signUpForm.getUsername());
+        ObjectError error = new ObjectError("username", "signup.page.form.error.username.taken");
+
+        if (existent != null) {
+            result.addError(error);
+
+            return false;
+        }
+
+        User user = new User(signUpForm.getUsername(), signUpForm.getPassword());
+
+        try {
+            userRepository.sigUp(user);
+            userRepository.flush();
+        } catch (PersistenceException e) {
+            logger.warn(e.getMessage(), e);
+            result.addError(error);
+
+            return false;
+        }
+
+        return true;
     }
 
     // Just for fun
@@ -74,11 +100,6 @@ public class SignUpController {
         for (ObjectError e : validationResult.getAllErrors()) {
             logger.info("sing up user error", e);
         }
-    }
-
-    private void signUpUser(SignUpForm signUpForm) {
-        User user = new User(signUpForm.getUsername(), signUpForm.getPassword());
-        userRepository.sigUp(user);
     }
 
 }

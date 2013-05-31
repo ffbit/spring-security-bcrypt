@@ -38,7 +38,7 @@
                placeholder="<@spring.message 'signup.page.form.label.username'/>">
         <input name="password" type="password" class="input-block-level"
                placeholder="<@spring.message 'signup.page.form.label.password'/>">
-        <input name="password_confirmation" type="password" class="input-block-level"
+        <input name="passwordConfirmation" type="password" class="input-block-level"
                placeholder="<@spring.message 'signup.page.form.label.password.confirm'/>">
         <input class="btn btn-large btn-primary" type="submit" value="<@spring.message 'signup.page.form.submit'/>"/>
         <@spring.message 'signup.page.form.or'/> <a href="<@spring.url '/signin' />"><@spring.message

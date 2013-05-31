@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 // Just for fun
 @ScriptAssert(lang = "javascript",
-        script = "_this.password == null && _this.password.equals(_this.passwordConfirmation)",
+        script = "_this.password.equals(_this.passwordConfirmation)",
         message = "signup.page.form.error.password.confirm")
 public class SignUpForm {
     private String username = "";

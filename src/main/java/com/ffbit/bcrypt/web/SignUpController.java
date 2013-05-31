@@ -1,12 +1,17 @@
 package com.ffbit.bcrypt.web;
 
 import com.ffbit.bcrypt.domain.User;
+import com.ffbit.bcrypt.domain.UserRole;
 import com.ffbit.bcrypt.dto.SignUpForm;
 import com.ffbit.bcrypt.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -68,6 +73,7 @@ public class SignUpController {
         }
 
         User user = new User(signUpForm.getUsername(), signUpForm.getPassword());
+        user.grantAuthority(UserRole.ROLE_USER);
 
         try {
             userRepository.sigUp(user);
@@ -79,7 +85,16 @@ public class SignUpController {
             return false;
         }
 
+        authorizeUser(user);
+
         return true;
+    }
+
+    private void authorizeUser(User user) {
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication =
+                new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+        context.setAuthentication(authentication);
     }
 
     // Just for fun

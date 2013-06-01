@@ -43,7 +43,15 @@ public class SignUpFormTest {
     @Parameters
     public static Collection<Object[]> getData() {
         return Arrays.asList(new Object[][]{
-                {"user", "password", "password", true}
+                {"user", "secret", "secret", true},
+                // too short user name
+                {"aaa", "secret", "secret", false},
+                // too short password
+                {"user", "pass", "pass", false},
+                // password mismatch
+                {"user", "password1", "password2", false},
+                // capitals in username
+                {"UsEr", "pass", "pass", false}
         });
     }
 

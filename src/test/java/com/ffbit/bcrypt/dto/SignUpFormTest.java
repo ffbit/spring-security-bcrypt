@@ -1,13 +1,13 @@
 package com.ffbit.bcrypt.dto;
 
-import org.hibernate.validator.HibernateValidator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
@@ -22,7 +22,7 @@ public class SignUpFormTest {
     private SignUpForm form;
     private boolean isValid;
 
-    private LocalValidatorFactoryBean validatorFactory;
+    private Validator validator;
 
     public SignUpFormTest(String username, String password,
                           String passwordConfirmation, boolean isValid) {
@@ -37,9 +37,7 @@ public class SignUpFormTest {
 
     @Before
     public void setUp() throws Exception {
-        validatorFactory = new LocalValidatorFactoryBean();
-        validatorFactory.setProviderClass(HibernateValidator.class);
-        validatorFactory.afterPropertiesSet();
+        validator = Validation.buildDefaultValidatorFactory().getValidator();
     }
 
     @Parameters
@@ -52,7 +50,7 @@ public class SignUpFormTest {
     @Test
     public void itShouldValidate() throws Exception {
         Set<ConstraintViolation<SignUpForm>> violations =
-                validatorFactory.validate(form);
+                validator.validate(form);
         assertThat(violations.isEmpty(), is(isValid));
     }
 

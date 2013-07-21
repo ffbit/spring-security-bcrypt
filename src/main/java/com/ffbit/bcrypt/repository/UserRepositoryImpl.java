@@ -17,7 +17,7 @@ public class UserRepositoryImpl implements UserSignUpRepository {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public void sigUp(User user) {
+    public void signUp(User user) {
         String passwordHash = passwordEncoder.encode(user.getPassword());
         user.setPassword(passwordHash);
 

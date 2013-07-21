@@ -76,7 +76,7 @@ public class SignUpController {
         user.grantAuthority(UserRole.ROLE_USER);
 
         try {
-            userRepository.sigUp(user);
+            userRepository.signUp(user);
             userRepository.flush();
         } catch (PersistenceException e) {
             logger.warn(e.getMessage(), e);

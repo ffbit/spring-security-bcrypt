@@ -73,7 +73,7 @@ public class SignUpController {
         }
 
         User user = new User(signUpForm.getUsername(), signUpForm.getPassword());
-        user.grantAuthority(UserRole.ROLE_USER);
+        grantDefaultAuthorities(user);
 
         try {
             userRepository.signUp(user);
@@ -88,6 +88,10 @@ public class SignUpController {
         authorizeUser(user);
 
         return true;
+    }
+
+    private void grantDefaultAuthorities(User user) {
+        user.grantAuthority(UserRole.ROLE_USER);
     }
 
     private void authorizeUser(User user) {

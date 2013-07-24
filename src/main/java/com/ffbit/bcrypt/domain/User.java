@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Cacheable;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -23,6 +24,7 @@ import java.util.Set;
 @Table(name = "users",
         uniqueConstraints = @UniqueConstraint(columnNames = "username", name = "uk_users_username"))
 @Access(AccessType.PROPERTY)
+@Cacheable
 public class User extends AbstractPersistable<Integer> implements UserDetails {
     private static final long serialVersionUID = 8608334294620998454L;
 

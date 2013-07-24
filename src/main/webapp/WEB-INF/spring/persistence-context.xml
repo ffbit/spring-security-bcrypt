@@ -36,6 +36,12 @@
                 <property name="databasePlatform" value="${hibernate.dialect}"/>
             </bean>
         </property>
+        <property name="jpaProperties">
+            <value>
+                hibernate.cache.provider_class=net.sf.ehcache.hibernate.SingletonEhCacheProvider
+                hibernate.cache.use_second_level_cache=true
+            </value>
+        </property>
     </bean>
 
     <bean id="transactionManager"

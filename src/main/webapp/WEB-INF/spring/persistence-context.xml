@@ -38,7 +38,7 @@
         </property>
         <property name="jpaProperties">
             <value>
-                hibernate.cache.provider_class=net.sf.ehcache.hibernate.SingletonEhCacheProvider
+                hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
                 hibernate.cache.use_second_level_cache=true
             </value>
         </property>
